@@ -10,7 +10,7 @@ public class CodeOps {
 		int [] res = new int [26]; // Alphabet size. 
 		String lowstrig = StringOps.lowercase(str);
 		for(int i=0; i < lowstrig.length(); i++)
-	    return new int [1];
+	    return new int[1];
 	}
 
 	public static void printHistogram(int[] letters) {

@@ -1,3 +1,5 @@
+import org.junit.platform.commons.util.LruCache;
+
 /*** you may only use the following String functions
 1.  str.charAt(int i);
 2.  str.length();
@@ -6,16 +8,38 @@
 */
 public class StringOps {
     public static void main(String[] args) {
-
-
+        System.out.println(trim("aaaababaaaa",'a'));
+        System.out.println(trim("aaaaaaaaaa",'a'));
+        System.out.println(trim("abaaabafdsgdfgjbaaaa",'a'));
     }
     public static String trim(String str,char ch) {
-        for(int i=0; i< str.length(); i++){
-
+        int left = 0;
+        int right = str.length();
+        boolean leftFlag =true;
+        boolean rightFlag =true;
+        int i = 0;
+        while ((leftFlag || rightFlag) && i<str.length()){
+            if(leftFlag){
+                char letter = str.charAt(i);
+                if(letter != ch){
+                    leftFlag = false;
+                    left = i;
+                }
+            }
+            if(rightFlag){
+                char letter = str.charAt(str.length()-i-1);
+                if(letter != ch){
+                    rightFlag = false;
+                    right = str.length()-i;
+                }
+            }
+            i++;
         }
-        return "";
+        if(left>=right || (leftFlag && rightFlag)){
+            return "";
+        }
+        return str.substring(left, right);   
     }
-
     public static int lastIndexOf(String str, char ch) {
         // Write your code here:
         return -1;
