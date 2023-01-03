@@ -9,7 +9,9 @@ public class CodeOps {
 		// Replace the return statement with your code.
 		int [] res = new int [26]; // Alphabet size. 
 		String lowstrig = StringOps.lowercase(str);
-		for(int i=0; i < lowstrig.length(); i++)
+		for(int i=0; i < lowstrig.length(); i++){
+			
+		}
 	    return new int[1];
 	}
 

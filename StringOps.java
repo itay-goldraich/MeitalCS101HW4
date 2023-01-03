@@ -11,6 +11,9 @@ public class StringOps {
         System.out.println(trim("aaaababaaaa",'a'));
         System.out.println(trim("aaaaaaaaaa",'a'));
         System.out.println(trim("abaaabafdsgdfgjbaaaa",'a'));
+        for (String item:tokenize("I love you Itay")){
+            System.out.print(item +",");
+        }
     }
     public static String trim(String str,char ch) {
         int left = 0;
@@ -50,8 +53,29 @@ public class StringOps {
         return "";
     }
     public static String [] tokenize(String str) {
-        // Write your code here:
-        return new String [0];
+        String tokenizeStr = trim(str,' ');
+        int arrayLenght = 1;
+        for (int i=0; i<tokenizeStr.length(); i++){
+            char letter = tokenizeStr.charAt(i);
+            if (letter == ' '){
+                arrayLenght++;
+            }
+        }
+        String[] tokenizeStringArray = new String[arrayLenght];
+        int left = 0;
+        int right = 0;
+        int index = 0;
+        for (; right<tokenizeStr.length(); right++){
+            char letter = tokenizeStr.charAt(right);
+            if (letter == ' '){
+                tokenizeStringArray[index] = tokenizeStr.substring(left, right);
+                left= right+1;
+                index++; 
+            }
+
+        }
+        tokenizeStringArray[index] = tokenizeStr.substring(left);
+        return tokenizeStringArray;
     }
 
 public static String lowercase(String str) {
