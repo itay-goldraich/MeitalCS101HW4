@@ -220,15 +220,19 @@ public class Recursion {
     private static int effMaxVal(int[][] arr, int i, int j, int[][] memo) {
         steps++;
         // Replace the following statement with your code:
+        if(memo[i][j] == -1){
+            memo [i][j] = arr[i][j] + Math.max(Continue(arr,i+1,j,memo),Continue(arr, i, j+1, memo)); 
+        }
+        return memo[i][j];
+    }
+
+    private static int Continue (int[][] arr, int i, int j, int[][] memo){
         if(i == memo.length){
             return 0;
         }
         if(j == memo[0].length){
             return 0;
         }
-        if(memo[i][j] == -1){
-            memo [i][j] = arr[i][j] + Math.max(effMaxVal(arr,i+1,j,memo),effMaxVal(arr, i, j+1, memo)); 
-        }
-        return memo[i][j];
+        return effMaxVal(arr,i,j,memo);
     }
 }
